@@ -46,7 +46,7 @@ def plot_gershgorin_discs(x, y, r):
 
 
 if __name__ == '__main__':
-    # Test functions
+    # Test
     A = np.matrix('10, -1, 0, 1; 0.2, 8 0.2, 0.2; 1, 1, 2, 1; -1, -1, -1, -11')
     x, y, r = create_gershgorin_discs(A)
     plot_gershgorin_discs(x, y, r)
