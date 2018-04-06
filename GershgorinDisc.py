@@ -7,7 +7,7 @@ from matplotlib.collections import PatchCollection
 def create_gershgorin_discs(mat):
     if mat.shape[0] != mat.shape[1]:
         print('Error: Input must be a square matrix')
-        return None
+        return False
 
     n = len(mat)
 
@@ -43,26 +43,9 @@ def plot_gershgorin_discs(x, y, r):
     plt.grid()
     plt.show()
 
-    return None
 
-
-def __test_vector_input():
-    vec = np.matrix('1, 1, 1')
-    create_gershgorin_discs(vec)
-
-
-def __test_non_square_matrix_input():
-    A = np.matrix('1, 1, 1; 1, 1, 1')
-    create_gershgorin_discs(A)
-
-
-def __test_plot_discs():
+if __name__ == '__main__':
+    # Sample plot of a given matrix A
     A = np.matrix('10, -1, 0, 1; 0.2, 8 0.2, 0.2; 1, 1, 2, 1; -1, -1, -1, -11')
     x, y, r = create_gershgorin_discs(A)
     plot_gershgorin_discs(x, y, r)
-
-
-if __name__ == '__main__':
-    __test_vector_input()
-    __test_non_square_matrix_input()
-    __test_plot_discs()
