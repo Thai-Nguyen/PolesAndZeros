@@ -29,7 +29,7 @@ class TestCreateCompanionMatrix(TestCase):
         from CompanionMatrix import create_companion_matrix
         coeffs = np.array((1, 0, 1))
         test_mat = create_companion_matrix(coeffs)
-        true_mat = 1  #TODO: Make companion matrix for polynomial x^2 + 1
+        true_mat = np.matrix('0, -1; 1, 0')
         self.assertEqual(test_mat, true_mat)
 
     def test_leading_coefficient_zero(self):
@@ -39,5 +39,15 @@ class TestCreateCompanionMatrix(TestCase):
         from CompanionMatrix import create_companion_matrix
         coeffs = np.array((0, 1, 1))
         test_mat = create_companion_matrix(coeffs)
-        true_mat = 1  # TODO: Make companion matrix for polynomial x + 1
+        true_mat = np.matrix('-1')
+        self.assertEqual(test_mat, true_mat)
+
+    def test_zero_constant_term(self):
+        # Testing case where the given polynomial is
+        # x^2 + x + 0
+        import numpy as np
+        from CompanionMatrix import create_companion_matrix
+        coeffs = np.array((0, 1, 1))
+        test_mat = create_companion_matrix(coeffs)
+        true_mat = np.matrix('0, 0; 1, -1')
         self.assertEqual(test_mat, true_mat)
