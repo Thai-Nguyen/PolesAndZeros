@@ -19,7 +19,7 @@ class TestCreateCompanionMatrix(TestCase):
         from CompanionMatrix import create_companion_matrix
         coeffs = np.array((1, 5, 4, 2, 1))
         test_mat = create_companion_matrix(coeffs)
-        true_mat = np.matrix('0, 0, 0, -1; 1, 0, 0, -2; 0, 1, 0, -4; 0, 0, 0, -5')
+        true_mat = np.matrix('0, 0, 0, -1; 1, 0, 0, -2; 0, 1, 0, -4; 0, 0, 1, -5')
         self.assertEqual(test_mat, true_mat)
 
     def test_one_zero_coefficient(self):
