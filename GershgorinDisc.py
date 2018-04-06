@@ -37,7 +37,6 @@ def plot_gershgorin_discs(x, y, r):
     p = PatchCollection(patches, alpha=0.2)
     ax.add_collection(p)
     plt.axis('equal')
-    plt.plot(x, y, marker='x', linestyle='none')
 
     plt.xlabel('Real')
     plt.ylabel('Imaginary')
