@@ -9,7 +9,7 @@ class TestCreateCompanionMatrix(TestCase):
         from CompanionMatrix import create_companion_matrix
         coeffs = np.array((1, 3, 4, 5))
         test_mat = create_companion_matrix(coeffs)
-        true_mat = np.matrix('0, 0, -5; 1, 0, -4; 0, 1, -3')
+        true_mat = np.array([[0, 0, -5], [1, 0, -4], [0, 1, -3]])
         np.testing.assert_array_equal(test_mat, true_mat)
 
     def test_even_leading_coefficient(self):
@@ -18,7 +18,7 @@ class TestCreateCompanionMatrix(TestCase):
         from CompanionMatrix import create_companion_matrix
         coeffs = np.array((1, 5, 4, 2, 1))
         test_mat = create_companion_matrix(coeffs)
-        true_mat = np.matrix('0, 0, 0, -1; 1, 0, 0, -2; 0, 1, 0, -4; 0, 0, 1, -5')
+        true_mat = np.array([[0, 0, 0, -1], [1, 0, 0, -2], [0, 1, 0, -4], [0, 0, 1, -5]])
         np.testing.assert_array_equal(test_mat, true_mat)
 
     def test_one_zero_coefficient(self):
@@ -27,7 +27,7 @@ class TestCreateCompanionMatrix(TestCase):
         from CompanionMatrix import create_companion_matrix
         coeffs = np.array((1, 0, 1))
         test_mat = create_companion_matrix(coeffs)
-        true_mat = np.matrix('0, -1; 1, 0')
+        true_mat = np.array([[0, -1], [1, 0]])
         np.testing.assert_array_equal(test_mat, true_mat)
 
     def test_leading_coefficient_zero(self):
@@ -36,7 +36,7 @@ class TestCreateCompanionMatrix(TestCase):
         from CompanionMatrix import create_companion_matrix
         coeffs = np.array((0, 1, 1))
         test_mat = create_companion_matrix(coeffs)
-        true_mat = np.matrix('-1')
+        true_mat = np.array([[-1]])
         np.testing.assert_array_equal(test_mat, true_mat)
 
     def test_zero_constant_term(self):
@@ -45,7 +45,7 @@ class TestCreateCompanionMatrix(TestCase):
         from CompanionMatrix import create_companion_matrix
         coeffs = np.array((1, 1, 0))
         test_mat = create_companion_matrix(coeffs)
-        true_mat = np.matrix('0, 0; 1, -1')
+        true_mat = np.array([[0, 0], [1, -1]])
         np.testing.assert_array_equal(test_mat, true_mat)
 
     def test_non_monic_polynomial(self):
@@ -54,5 +54,5 @@ class TestCreateCompanionMatrix(TestCase):
         from CompanionMatrix import create_companion_matrix
         coeffs = np.array((4, 2, 1, 1))
         test_mat = create_companion_matrix(coeffs)
-        true_mat = np.matrix('0, 0, -0.25; 1, 0, -0.25; 0, 1, -0.5')
+        true_mat = np.array([[0, 0, -0.25], [1, 0, -0.25], [0, 1, -0.5]])
         np.testing.assert_array_almost_equal(test_mat, true_mat)
