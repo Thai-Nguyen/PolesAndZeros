@@ -47,3 +47,12 @@ class TestCreateCompanionMatrix(TestCase):
         test_mat = create_companion_matrix(coeffs)
         true_mat = np.matrix('0, 0; 1, -1')
         np.testing.assert_array_equal(test_mat, true_mat)
+
+    def test_non_monic_polynomial(self):
+        # Testing case where the given polynomial is
+        # 4x^3 + 2x^2 + x + 1
+        from CompanionMatrix import create_companion_matrix
+        coeffs = np.array((4, 2, 1, 1))
+        test_mat = create_companion_matrix(coeffs)
+        true_mat = np.matrix('0, 0, -0.25; 1, 0, -0.25; 0, 1, -0.5')
+        np.testing.assert_array_almost_equal(test_mat, true_mat)
